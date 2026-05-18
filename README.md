@@ -105,14 +105,6 @@ public/
   users/                   User avatar assets
 ```
 
-## Notes and Current Limitations
-
-- Search inputs are present in the UI but are not wired to filtering logic yet.
-- Several sidebar/mobile navigation items are placeholders that link to `#`.
-- Company save/delete/account actions are UI-only and do not persist changes.
-- Analytics charts currently use hard-coded sample data rather than computed live data.
-- There is no database, authentication, or backend API in the current implementation.
-
 ## Useful Development Commands
 
 ```bash
