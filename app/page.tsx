@@ -91,7 +91,7 @@ const HomePage: React.FC = () => {
               className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
             >
               <Home className="h-4 w-4 transition-all group-hover:scale-110" />
-              <span className="sr-only">Dashboard</span>
+                  <span className="sr-only">SignalScout deal pipeline</span>
             </Link>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -100,10 +100,10 @@ const HomePage: React.FC = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Users2 className="h-5 w-5" />
-                  <span className="sr-only">Founders</span>
+                  <span className="sr-only">Founder Network</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Founders</TooltipContent>
+              <TooltipContent side="right">Founder Network</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -112,10 +112,10 @@ const HomePage: React.FC = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <BookOpen className="h-5 w-5" />
-                  <span className="sr-only">Papers</span>
+                  <span className="sr-only">Research Watchlist</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Papers</TooltipContent>
+              <TooltipContent side="right">Research Watchlist</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -124,10 +124,10 @@ const HomePage: React.FC = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <LineChartAlt className="h-5 w-5" />
-                  <span className="sr-only">Analytics</span>
+                  <span className="sr-only">Sourcing Analytics</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Analytics</TooltipContent>
+              <TooltipContent side="right">Sourcing Analytics</TooltipContent>
             </Tooltip>
           </nav>
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
@@ -160,43 +160,43 @@ const HomePage: React.FC = () => {
                     href="#"
                     className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
                   >
-                    <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                    <span className="sr-only">Acme Inc</span>
+                    <Sparkles className="h-5 w-5 transition-all group-hover:scale-110" />
+                    <span className="sr-only">SignalScout</span>
                   </Link>
                   <Link
                     href="/"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <Home className="h-5 w-5" />
-                    Dashboard
+                    Deal Pipeline
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <ShoppingCart className="h-5 w-5" />
-                    Orders
+                    Signals
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-foreground"
                   >
                     <Package className="h-5 w-5" />
-                    Companies
+                    Startup Pipeline
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <Users2 className="h-5 w-5" />
-                    Founders
+                    Founder Network
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <LineChartAlt className="h-5 w-5" />
-                    Settings
+                    Source Settings
                   </Link>
                 </nav>
               </SheetContent>
@@ -204,7 +204,7 @@ const HomePage: React.FC = () => {
             <Breadcrumb className="hidden md:flex">
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                  <BreadcrumbPage>SignalScout</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -212,7 +212,7 @@ const HomePage: React.FC = () => {
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder="Search..."
+                placeholder="Search startups, signals..."
                 className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
               />
             </div>
@@ -233,7 +233,7 @@ const HomePage: React.FC = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>Scout Profile</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
@@ -247,9 +247,9 @@ const HomePage: React.FC = () => {
               <TabsContent value="all">
                 <Card x-chunk="dashboard-06-chunk-0">
                   <CardHeader>
-                    <CardTitle>Companies</CardTitle>
+                    <CardTitle>Startup Pipeline</CardTitle>
                     <CardDescription>
-                      Keep track of the latest startups.
+                      Track early-stage AI companies, deal signals, and stack fit.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -337,16 +337,17 @@ const HomePage: React.FC = () => {
                             </PaginationLink>
                           </PaginationItem>
                         ))}
-                        <PaginationItem>
-                          <PaginationNext
-                            onClick={() =>
-                              setCurrentPage((prev) =>
-                                Math.min(prev + 1, totalPages)
-                              )
-                            }
-                            disabled={currentPage === totalPages}
-                          />
-                        </PaginationItem>
+                        {currentPage < totalPages && (
+                          <PaginationItem>
+                            <PaginationNext
+                              onClick={() =>
+                                setCurrentPage((prev) =>
+                                  Math.min(prev + 1, totalPages)
+                                )
+                              }
+                            />
+                          </PaginationItem>
+                        )}
                       </PaginationContent>
                     </Pagination>
                   </CardContent>

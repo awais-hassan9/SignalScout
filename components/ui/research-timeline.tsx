@@ -196,6 +196,11 @@ export function ResearchTimeline() {
   );
 
   const [selectedLine, setSelectedLine] = React.useState<string | null>(null);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const getLineOpacity = (dataKey: string) => {
     if (!selectedLine) return 1;
@@ -222,97 +227,99 @@ export function ResearchTimeline() {
         </CardHeader>
         <CardContent>
           <div className="min-h-[300px] h-[376px]">
-            <LineChart
-              width={600}
-              height={350}
-              data={timelineData}
-              margin={{
-                top: 20,
-                right: 30,
-                left: 20,
-                bottom: 20,
-              }}
-            >
-              <CartesianGrid vertical={false} stroke="hsl(var(--border))" />
-              <XAxis
-                dataKey="date"
-                tickLine={false}
-                axisLine={true}
-                tickMargin={4}
-                tick={{ fontSize: 11, fill: "#71717a" }}
-              />
-              <YAxis
-                label={{
-                  value: "Research Maturity",
-                  angle: -90,
-                  position: "insideLeft",
+            {isMounted ? (
+              <LineChart
+                width={600}
+                height={350}
+                data={timelineData}
+                margin={{
+                  top: 20,
+                  right: 30,
+                  left: 20,
+                  bottom: 20,
                 }}
-                domain={[0, 100]}
-                tick={{ fill: "#71717a" }}
-              />
-              <Tooltip content={<CustomTooltip />} />
+              >
+                <CartesianGrid vertical={false} stroke="hsl(var(--border))" />
+                <XAxis
+                  dataKey="date"
+                  tickLine={false}
+                  axisLine={true}
+                  tickMargin={4}
+                  tick={{ fontSize: 11, fill: "#71717a" }}
+                />
+                <YAxis
+                  label={{
+                    value: "Research Maturity",
+                    angle: -90,
+                    position: "insideLeft",
+                  }}
+                  domain={[0, 100]}
+                  tick={{ fill: "#71717a" }}
+                />
+                <Tooltip content={<CustomTooltip />} />
 
-              {/* Main trend lines */}
-              <Line
-                type="monotone"
-                dataKey="llms"
-                stroke={chartConfig.llms.color}
-                strokeWidth={2}
-                dot={false}
-                opacity={getLineOpacity("llms")}
-                onClick={() =>
-                  setSelectedLine(selectedLine === "llms" ? null : "llms")
-                }
-                style={{ cursor: "pointer" }}
-              />
-              <Line
-                type="monotone"
-                dataKey="multiModal"
-                stroke={chartConfig.multiModal.color}
-                strokeWidth={2}
-                dot={false}
-                opacity={getLineOpacity("multiModal")}
-                onClick={() =>
-                  setSelectedLine(
-                    selectedLine === "multiModal" ? null : "multiModal"
-                  )
-                }
-                style={{ cursor: "pointer" }}
-              />
-              <Line
-                type="monotone"
-                dataKey="agents"
-                stroke={chartConfig.agents.color}
-                strokeWidth={2}
-                dot={false}
-                opacity={getLineOpacity("agents")}
-                onClick={() =>
-                  setSelectedLine(selectedLine === "agents" ? null : "agents")
-                }
-                style={{ cursor: "pointer" }}
-              />
+                {/* Main trend lines */}
+                <Line
+                  type="monotone"
+                  dataKey="llms"
+                  stroke={chartConfig.llms.color}
+                  strokeWidth={2}
+                  dot={false}
+                  opacity={getLineOpacity("llms")}
+                  onClick={() =>
+                    setSelectedLine(selectedLine === "llms" ? null : "llms")
+                  }
+                  style={{ cursor: "pointer" }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="multiModal"
+                  stroke={chartConfig.multiModal.color}
+                  strokeWidth={2}
+                  dot={false}
+                  opacity={getLineOpacity("multiModal")}
+                  onClick={() =>
+                    setSelectedLine(
+                      selectedLine === "multiModal" ? null : "multiModal"
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="agents"
+                  stroke={chartConfig.agents.color}
+                  strokeWidth={2}
+                  dot={false}
+                  opacity={getLineOpacity("agents")}
+                  onClick={() =>
+                    setSelectedLine(selectedLine === "agents" ? null : "agents")
+                  }
+                  style={{ cursor: "pointer" }}
+                />
 
-              {/* Add reference dots only for key papers */}
-              {keyPaperData.map((item, index) => {
-                const categoryKey = item.category
-                  ?.toLowerCase()
-                  .replace("-", "") as keyof typeof chartConfig;
-                const value = item[categoryKey];
+                {/* Add reference dots only for key papers */}
+                {keyPaperData.map((item) => {
+                  const categoryKey = item.category
+                    ?.toLowerCase()
+                    .replace("-", "") as keyof typeof chartConfig;
+                  const value = item[categoryKey];
 
-                return (
-                  <ReferenceDot
-                    key={`${item.date}-${item.keyPaper}`}
-                    x={item.date}
-                    y={value}
-                    r={6}
-                    fill={chartConfig[categoryKey]?.color || "#000"}
-                    stroke="white"
-                    strokeWidth={2}
-                    opacity={getLineOpacity(categoryKey)}
-                  />
-                );
-              })}
-            </LineChart>
+                  return (
+                    <ReferenceDot
+                      key={`${item.date}-${item.keyPaper}`}
+                      x={item.date}
+                      y={value}
+                      r={6}
+                      fill={chartConfig[categoryKey]?.color || "#000"}
+                      stroke="white"
+                      strokeWidth={2}
+                      opacity={getLineOpacity(categoryKey)}
+                    />
+                  );
+                })}
+              </LineChart>
+            ) : null}
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">

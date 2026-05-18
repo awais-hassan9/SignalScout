@@ -93,10 +93,10 @@ const Papers = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Home className="h-5 w-5" />
-                  <span className="sr-only">Dashboard</span>
+                  <span className="sr-only">Deal Pipeline</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Dashboard</TooltipContent>
+              <TooltipContent side="right">Deal Pipeline</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -105,10 +105,10 @@ const Papers = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Users2 className="h-5 w-5" />
-                  <span className="sr-only">Founders</span>
+                  <span className="sr-only">Founder Network</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Founders</TooltipContent>
+              <TooltipContent side="right">Founder Network</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -117,10 +117,10 @@ const Papers = () => {
                   className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
                 >
                   <BookOpen className="h-4 w-4 transition-all group-hover:scale-110" />
-                  <span className="sr-only">Papers</span>
+                  <span className="sr-only">Research Watchlist</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Papers</TooltipContent>
+              <TooltipContent side="right">Research Watchlist</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -129,10 +129,10 @@ const Papers = () => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <LineChart className="h-5 w-5" />
-                  <span className="sr-only">Analytics</span>
+                  <span className="sr-only">Sourcing Analytics</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Analytics</TooltipContent>
+              <TooltipContent side="right">Sourcing Analytics</TooltipContent>
             </Tooltip>
           </nav>
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
@@ -166,14 +166,14 @@ const Papers = () => {
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <Users2 className="h-5 w-5" />
-                    Papers
+                    Research Watchlist
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <LineChart className="h-5 w-5" />
-                    Settings
+                    Source Settings
                   </Link>
                 </nav>
               </SheetContent>
@@ -181,7 +181,7 @@ const Papers = () => {
             <Breadcrumb className="hidden md:flex">
               <BreadcrumbList>
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Papers</BreadcrumbPage>
+                  <BreadcrumbPage>Research Watchlist</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -189,7 +189,7 @@ const Papers = () => {
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder="Search..."
+                placeholder="Search papers, trends..."
                 className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
               />
             </div>
@@ -210,7 +210,7 @@ const Papers = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>Scout Profile</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>
@@ -224,7 +224,7 @@ const Papers = () => {
               <div className="flex items-center gap-4">
                 <div className="flex items-center space-x-2">
                   <h1 className="flex-1 shrink-0 whitespace-nowrap text-xl font-semibold tracking-tight sm:grow-0">
-                    Research Tracking
+                    Research Watchlist
                   </h1>
                 </div>
               </div>
@@ -240,7 +240,7 @@ const Papers = () => {
                 <div className="flex items-center gap-2 mb-4">
                   <TrendingUp className="h-6 w-6 stroke-[2.5]" />
                   <h2 className="text-xl font-semibold tracking-tight">
-                    Trending Papers
+                    Signal-Rich Papers
                   </h2>
                 </div>
                 {sortedPapers.map((paper, index) => (

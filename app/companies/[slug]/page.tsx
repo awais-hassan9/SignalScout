@@ -144,10 +144,10 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Home className="h-5 w-5" />
-                  <span className="sr-only">Dashboard</span>
+                  <span className="sr-only">Deal Pipeline</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Dashboard</TooltipContent>
+              <TooltipContent side="right">Deal Pipeline</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -156,10 +156,10 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <Users2 className="h-5 w-5" />
-                  <span className="sr-only">Founders</span>
+                  <span className="sr-only">Founder Network</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Founders</TooltipContent>
+              <TooltipContent side="right">Founder Network</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -168,10 +168,10 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <BookOpen className="h-5 w-5" />
-                  <span className="sr-only">Papers</span>
+                  <span className="sr-only">Research Watchlist</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Papers</TooltipContent>
+              <TooltipContent side="right">Research Watchlist</TooltipContent>
             </Tooltip>
             <Tooltip>
               <TooltipTrigger asChild>
@@ -180,10 +180,10 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                   className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                 >
                   <LineChart className="h-5 w-5" />
-                  <span className="sr-only">Analytics</span>
+                  <span className="sr-only">Sourcing Analytics</span>
                 </Link>
               </TooltipTrigger>
-              <TooltipContent side="right">Analytics</TooltipContent>
+              <TooltipContent side="right">Sourcing Analytics</TooltipContent>
             </Tooltip>
           </nav>
           <nav className="mt-auto flex flex-col items-center gap-4 px-2 py-4">
@@ -217,28 +217,28 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <Home className="h-5 w-5" />
-                    Dashboard
+                    Deal Pipeline
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-foreground"
                   >
                     <Package className="h-5 w-5" />
-                    All Companies
+                    Startup Pipeline
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <Users2 className="h-5 w-5" />
-                    Founders
+                    Founder Network
                   </Link>
                   <Link
                     href="#"
                     className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                   >
                     <LineChart className="h-5 w-5" />
-                    Settings
+                    Source Settings
                   </Link>
                 </nav>
               </SheetContent>
@@ -247,18 +247,18 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
               <BreadcrumbList>
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/">Dashboard</Link>
+                    <Link href="/">SignalScout</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
                   <BreadcrumbLink asChild>
-                    <Link href="/">All Companies</Link>
+                    <Link href="/">Startup Pipeline</Link>
                   </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Company Profile</BreadcrumbPage>
+                  <BreadcrumbPage>Deal Profile</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -266,7 +266,7 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder="Search..."
+                placeholder="Search startups, signals..."
                 className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[320px]"
               />
             </div>
@@ -287,7 +287,7 @@ const CompanyProfile = ({ params }: CompanyProfileProps) => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuLabel>Scout Profile</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Support</DropdownMenuItem>

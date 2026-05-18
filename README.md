@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SignalScout
+
+SignalScout is a Next.js dashboard for tracking early-stage AI companies, reviewing deal signals, and keeping a lightweight research watchlist. The app is currently backed by local TypeScript data files, so it runs without a database or external API.
+
+## What This Project Does
+
+- Shows the Startup Pipeline at `/` with startup names, descriptions, founding year, AI score, and AI stack.
+- Opens detailed Deal Profiles at `/companies/[slug]` with company metadata, founder information, AI-generated style summaries, and radar scoring.
+- Tracks AI research in the Research Watchlist at `/papers` with paper cards, trend visualization, timeline visualization, arXiv links, and related GitHub/project links.
+- Displays Sourcing Analytics at `/analytics` using Recharts cards for reviewed startups, average scores, progress, category mix, radar metrics, and founder response rate.
+- Uses a responsive sidebar/header layout with shadcn-style UI primitives, Radix UI, Tailwind CSS, lucide icons, and local image assets.
+
+## Main Routes
+
+| Route | Purpose |
+| --- | --- |
+| `/` | Startup Pipeline and paginated sourcing table |
+| `/companies/[slug]` | Deal Profile for one company from `data/companies.ts` |
+| `/papers` | Research Watchlist sorted by paper date |
+| `/analytics` | Sourcing Analytics dashboard |
+
+Example company detail URLs include:
+
+- `/companies/landscape`
+- `/companies/brainbase`
+- `/companies/retellai`
+- `/companies/quno`
+
+## Data Sources
+
+The app uses local static data:
+
+- `data/companies.ts` contains company records, founders, funding, stage, AI stack, summaries, and scoring dimensions.
+- `data/papers.ts` contains research paper metadata, author lists, arXiv links, project links, categories, images, and helper stats.
+- `public/companies/*` stores company logos.
+- `public/papers/*` stores paper thumbnails.
+- `public/icons/*` stores category and external-link icons.
+- `public/users/jay-icon.png` is used as the current avatar in the header.
+
+To add a new company, add a record to the `companies` array in `data/companies.ts`, give it a unique `slug`, and add a logo under `public/companies` if needed. The company will appear in the Startup Pipeline and its Deal Profile will be available at `/companies/<slug>`.
+
+To add a new paper, add a record to the `papers` array in `data/papers.ts` and place any thumbnail under `public/papers`.
+
+## Tech Stack
+
+- Next.js 15 App Router
+- React 18
+- TypeScript
+- Tailwind CSS
+- Radix UI primitives
+- Recharts
+- lucide-react icons
+- better-react-mathjax for math rendering support
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build for production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the production build:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```text
+app/
+  page.tsx                 Startup Pipeline
+  analytics/page.tsx       Sourcing Analytics dashboard
+  papers/page.tsx          Research Watchlist
+  companies/[slug]/page.tsx
+components/
+  providers/               App-level providers
+  ui/                      Reusable UI components and charts
+data/
+  companies.ts             Static company/deal data
+  papers.ts                Static research paper data
+public/
+  companies/               Company logos
+  papers/                  Paper thumbnails
+  icons/                   UI and category icons
+  users/                   User avatar assets
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes and Current Limitations
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Search inputs are present in the UI but are not wired to filtering logic yet.
+- Several sidebar/mobile navigation items are placeholders that link to `#`.
+- Company save/delete/account actions are UI-only and do not persist changes.
+- Analytics charts currently use hard-coded sample data rather than computed live data.
+- There is no database, authentication, or backend API in the current implementation.
+
+## Useful Development Commands
+
+```bash
+npm run dev      # Start the local development server
+npm run build    # Create a production build
+npm run start    # Serve the production build
+npm run lint     # Run the configured lint command
+```

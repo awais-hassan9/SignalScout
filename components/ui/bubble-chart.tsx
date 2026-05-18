@@ -926,6 +926,11 @@ const TrendBubbleChart = React.forwardRef<HTMLDivElement, BubbleChartProps>(
   ({ data = trendData, className, ...props }, ref) => {
     const [activeBubble, setActiveBubble] = useState<string | null>(null);
     const [activeCategory, setActiveCategory] = useState<string | null>(null);
+    const [isMounted, setIsMounted] = useState(false);
+
+    React.useEffect(() => {
+      setIsMounted(true);
+    }, []);
 
     const handleBubbleClick = React.useCallback((event: any) => {
       if (!event?.payload) return;
@@ -964,50 +969,52 @@ const TrendBubbleChart = React.forwardRef<HTMLDivElement, BubbleChartProps>(
         </CardHeader>
         <CardContent>
           <div className="min-h-[300px] h-[376px]">
-            <ResponsiveContainer width="100%" height="100%" minWidth={300}>
-              <ScatterChart
-                margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
-              >
-                <XAxis
-                  dataKey="impact"
-                  name="Impact"
-                  type="number"
-                  domain={[0, 100]}
-                  label={{
-                    value: "Impact Score",
-                    position: "bottom",
-                    offset: 0,
-                  }}
-                />
-                <YAxis
-                  dataKey="growth"
-                  name="Growth"
-                  unit="%"
-                  domain={[0, 400]}
-                  label={{
-                    value: "Growth Rate (%)",
-                    angle: -90,
-                    position: "insideLeft",
-                    offset: -4,
-                    textAnchor: "middle",
-                  }}
-                />
-                <ZAxis type="number" dataKey="papers" range={[20, 5000]} />
-                <Tooltip content={<CustomTooltip />} />
-                {Object.entries(categoryColors).map(([category, color]) => (
-                  <Scatter
-                    key={category}
-                    name={category}
-                    data={getModifiedData(
-                      data.filter((item) => item.category === category)
-                    )}
-                    fill={color}
-                    onClick={handleBubbleClick}
-                    cursor="pointer"
+            {isMounted ? (
+              <ResponsiveContainer width="100%" height="100%" minWidth={300}>
+                <ScatterChart
+                  margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+                >
+                  <XAxis
+                    dataKey="impact"
+                    name="Impact"
+                    type="number"
+                    domain={[0, 100]}
+                    label={{
+                      value: "Impact Score",
+                      position: "bottom",
+                      offset: 0,
+                    }}
                   />
-                ))}
-              </ScatterChart>
-            </ResponsiveContainer>
+                  <YAxis
+                    dataKey="growth"
+                    name="Growth"
+                    unit="%"
+                    domain={[0, 400]}
+                    label={{
+                      value: "Growth Rate (%)",
+                      angle: -90,
+                      position: "insideLeft",
+                      offset: -4,
+                      textAnchor: "middle",
+                    }}
+                  />
+                  <ZAxis type="number" dataKey="papers" range={[20, 5000]} />
+                  <Tooltip content={<CustomTooltip />} />
+                  {Object.entries(categoryColors).map(([category, color]) => (
+                    <Scatter
+                      key={category}
+                      name={category}
+                      data={getModifiedData(
+                        data.filter((item) => item.category === category)
+                      )}
+                      fill={color}
+                      onClick={handleBubbleClick}
+                      cursor="pointer"
+                    />
+                  ))}
+                </ScatterChart>
+              </ResponsiveContainer>
+            ) : null}
           </div>
           <div className="mt-6 flex flex-wrap gap-4 px-4">
             {Object.entries(categoryColors).map(([category, color]) => (
